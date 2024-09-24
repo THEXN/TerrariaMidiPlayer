@@ -328,117 +328,131 @@ namespace TerrariaMidiPlayer {
 			}
 		}
 
-		#endregion
-		//=========== UPDATING ===========
-		#region Updating
+        #endregion
+        //=========== UPDATING ===========
+        #region Updating
 
-		/**<summary>Updates changes to the selected midi.</summary>*/
-		public void UpdateMidi() {
-			loaded = false;
-			listTracks.Items.Clear();
-			if (Config.HasMidi) {
-				Config.Sequencer.Sequence = Config.Midi.Sequence;
-				Config.Sequencer.Speed = Config.Midi.SpeedRatio;
+        /**<summary>Updates changes to the selected midi.</summary>*/
+        public void UpdateMidi()
+        {
+            loaded = false;
+            listTracks.Items.Clear();
+            if (Config.HasMidi)
+            {
+                Config.Sequencer.Sequence = Config.Midi.Sequence;
+                Config.Sequencer.Speed = Config.Midi.SpeedRatio;
 
-				labelTotalNotes.Content = "Total Notes: " + Config.Midi.TotalNotes;
-				labelDuration.Content = "Duration: " + MillisecondsToString(Config.Sequencer.Duration);
-				keybindReaderMidi.Keybind = Config.Midi.Keybind;
-				numericNoteOffset.IsEnabled = true;
-				numericSpeed.IsEnabled = true;
-				numericNoteOffset.Value = Config.Midi.NoteOffset;
-				numericSpeed.Value = Config.Midi.Speed;
-				keybindReaderMidi.IsEnabled = true;
-				if (Config.Midi.TrackCount > 0) {
-					for (int i = 0; i < Config.Midi.TrackCount; i++) {
-						ListBoxItem item = new ListBoxItem();
-						item.Content = Config.Midi.GetTrackSettingsAt(i).ProperName;
-						if (!Config.Midi.GetTrackSettingsAt(i).Enabled)
-							item.Foreground = Brushes.Gray;
-						listTracks.Items.Add(item);
-					}
-					trackIndex = 0;
-				}
-				else {
-					trackIndex = -1;
-				}
-				buttonEditTrackName.IsEnabled = (trackIndex != -1);
-				buttonTrackGraph.IsEnabled = (trackIndex != -1);
-				listTracks.SelectedIndex = trackIndex;
-				listTracks.IsEnabled = (Config.Midi.TrackCount > 0);
+                labelTotalNotes.Content = "总音符数: " + Config.Midi.TotalNotes;
+                labelDuration.Content = "时长: " + MillisecondsToString(Config.Sequencer.Duration);
+                keybindReaderMidi.Keybind = Config.Midi.Keybind;
+                numericNoteOffset.IsEnabled = true;
+                numericSpeed.IsEnabled = true;
+                numericNoteOffset.Value = Config.Midi.NoteOffset;
+                numericSpeed.Value = Config.Midi.Speed;
+                keybindReaderMidi.IsEnabled = true;
+                if (Config.Midi.TrackCount > 0)
+                {
+                    for (int i = 0; i < Config.Midi.TrackCount; i++)
+                    {
+                        ListBoxItem item = new ListBoxItem();
+                        item.Content = Config.Midi.GetTrackSettingsAt(i).ProperName;
+                        if (!Config.Midi.GetTrackSettingsAt(i).Enabled)
+                            item.Foreground = Brushes.Gray;
+                        listTracks.Items.Add(item);
+                    }
+                    trackIndex = 0;
+                }
+                else
+                {
+                    trackIndex = -1;
+                }
+                buttonEditTrackName.IsEnabled = (trackIndex != -1);
+                buttonTrackGraph.IsEnabled = (trackIndex != -1);
+                listTracks.SelectedIndex = trackIndex;
+                listTracks.IsEnabled = (Config.Midi.TrackCount > 0);
 
-				labelDuration.Content = "Duration: " + MillisecondsToString(Config.Sequencer.Duration);
-				tabMidiSetup.Header = (Config.Midi.IsABC ? "ABC" : "Midi") + " Setup";
-			}
-			else {
-				trackIndex = -1;
-				labelTotalNotes.Content = "Total Notes: ";
-				labelDuration.Content = "Duration: ";
-				numericNoteOffset.IsEnabled = false;
-				numericSpeed.IsEnabled = false;
-				listTracks.IsEnabled = false;
-				keybindReaderMidi.IsEnabled = false;
-				buttonEditTrackName.IsEnabled = false;
-				buttonTrackGraph.IsEnabled = false;
-				tabMidiSetup.Header = "Midi Setup";
-			}
-			loaded = true;
-			UpdateTrack();
-			UpdateMidiButtons();
-			UpdatePlayTime();
-		}
-		/**<summary>Updates changes to the selected midi track.</summary>*/
-		private void UpdateTrack() {
-			loaded = false;
-			if (Config.HasMidi && Config.Midi.TrackCount > 0) {
-				UpdateTrackNotes();
-				labelChords.Content = "Chords: " + Config.Midi.GetTrackAt(listTracks.SelectedIndex).Chords;
-				labelNotes.Content = "Notes: " + Config.Midi.GetTrackAt(listTracks.SelectedIndex).Notes;
-				checkBoxTrackEnabled.IsChecked = Config.Midi.GetTrackSettingsAt(listTracks.SelectedIndex).Enabled;
-				numericOctaveOffset.Value = Config.Midi.GetTrackSettingsAt(listTracks.SelectedIndex).OctaveOffset;
-				numericOctaveOffset.IsEnabled = true;
-				checkBoxTrackEnabled.IsEnabled = true;
-			}
-			else {
-				labelHighestNote.Content = "Highest Note: ";
-				labelLowestNote.Content = "Lowest Note: ";
-				labelChords.Content = "Chords: ";
-				labelNotes.Content = "Notes: ";
-				numericOctaveOffset.IsEnabled = false;
-				checkBoxTrackEnabled.IsEnabled = false;
-			}
-			loaded = true;
-		}
-		/**<summary>Updates changes to the midi track's note range.</summary>*/
-		private void UpdateTrackNotes() {
-			labelHighestNote.Content = "Highest Note: " + NoteToString(
-				Config.Midi.GetTrackAt(trackIndex).HighestNote +
-				Config.Midi.NoteOffset /*-
-				Config.Midi.GetTrackSettingsAt(trackIndex).OctaveOffset * 12*/
-			);
-			labelLowestNote.Content = "Lowest Note: " + NoteToString(
-				Config.Midi.GetTrackAt(trackIndex).LowestNote +
-				Config.Midi.NoteOffset /*-
-				Config.Midi.GetTrackSettingsAt(trackIndex).OctaveOffset * 12*/
-			);
-		}
-		/**<summary>Updates enabled state of midi buttons.</summary>*/
-		private void UpdateMidiButtons() {
-			buttonRemoveMidi.IsEnabled = Config.HasMidi;
-			buttonEditMidiName.IsEnabled = Config.HasMidi;
-			buttonMoveMidiUp.IsEnabled = Config.HasMidi;
-			buttonMoveMidiDown.IsEnabled = (Config.HasMidi && Config.MidiIndex + 1 < Config.Midis.Count);
+                labelDuration.Content = "时长: " + MillisecondsToString(Config.Sequencer.Duration);
+                tabMidiSetup.Header = (Config.Midi.IsABC ? "ABC" : "MIDI") + " 设置";
+            }
+            else
+            {
+                trackIndex = -1;
+                labelTotalNotes.Content = "总音符数: ";
+                labelDuration.Content = "时长: ";
+                numericNoteOffset.IsEnabled = false;
+                numericSpeed.IsEnabled = false;
+                listTracks.IsEnabled = false;
+                keybindReaderMidi.IsEnabled = false;
+                buttonEditTrackName.IsEnabled = false;
+                buttonTrackGraph.IsEnabled = false;
+                tabMidiSetup.Header = "MIDI 设置";
+            }
+            loaded = true;
+            UpdateTrack();
+            UpdateMidiButtons();
+            UpdatePlayTime();
+        }
 
-			toggleButtonPiano.IsEnabled = Config.HasMidi;
-			toggleButtonStop.IsEnabled = Config.HasMidi;
-			toggleButtonPlay.IsEnabled = Config.HasMidi;
-			toggleButtonPause.IsEnabled = Config.HasMidi;
-			sliderMidiPosition.IsEnabled = Config.HasMidi;
-			loaded = false;
-			sliderMidiPosition.Value = 0;
-			loaded = true;
-		}
-		/**<summary>Updates the play time in the playback tab.</summary>*/
-		private void UpdatePlayTime() {
+        /** <summary>更新所选MIDI轨道的变化。</summary> */
+        private void UpdateTrack()
+        {
+            loaded = false;
+            if (Config.HasMidi && Config.Midi.TrackCount > 0)
+            {
+                UpdateTrackNotes();
+                labelChords.Content = "和弦: " + Config.Midi.GetTrackAt(listTracks.SelectedIndex).Chords;
+                labelNotes.Content = "音符: " + Config.Midi.GetTrackAt(listTracks.SelectedIndex).Notes;
+                checkBoxTrackEnabled.IsChecked = Config.Midi.GetTrackSettingsAt(listTracks.SelectedIndex).Enabled;
+                numericOctaveOffset.Value = Config.Midi.GetTrackSettingsAt(listTracks.SelectedIndex).OctaveOffset;
+                numericOctaveOffset.IsEnabled = true;
+                checkBoxTrackEnabled.IsEnabled = true;
+            }
+            else
+            {
+                labelHighestNote.Content = "最高音: ";
+                labelLowestNote.Content = "最低音: ";
+                labelChords.Content = "和弦: ";
+                labelNotes.Content = "音符: ";
+                numericOctaveOffset.IsEnabled = false;
+                checkBoxTrackEnabled.IsEnabled = false;
+            }
+            loaded = true;
+        }
+
+        /** <summary>更新MIDI轨道的音符范围。</summary> */
+        private void UpdateTrackNotes()
+        {
+            labelHighestNote.Content = "最高音: " + NoteToString(
+                Config.Midi.GetTrackAt(trackIndex).HighestNote +
+                Config.Midi.NoteOffset /*-
+        Config.Midi.GetTrackSettingsAt(trackIndex).OctaveOffset * 12*/
+            );
+            labelLowestNote.Content = "最低音: " + NoteToString(
+                Config.Midi.GetTrackAt(trackIndex).LowestNote +
+                Config.Midi.NoteOffset /*-
+        Config.Midi.GetTrackSettingsAt(trackIndex).OctaveOffset * 12*/
+            );
+        }
+
+        /** <summary>更新MIDI按钮的启用状态。</summary> */
+        private void UpdateMidiButtons()
+        {
+            buttonRemoveMidi.IsEnabled = Config.HasMidi;
+            buttonEditMidiName.IsEnabled = Config.HasMidi;
+            buttonMoveMidiUp.IsEnabled = Config.HasMidi;
+            buttonMoveMidiDown.IsEnabled = (Config.HasMidi && Config.MidiIndex + 1 < Config.Midis.Count);
+
+            toggleButtonPiano.IsEnabled = Config.HasMidi;
+            toggleButtonStop.IsEnabled = Config.HasMidi;
+            toggleButtonPlay.IsEnabled = Config.HasMidi;
+            toggleButtonPause.IsEnabled = Config.HasMidi;
+            sliderMidiPosition.IsEnabled = Config.HasMidi;
+            loaded = false;
+            sliderMidiPosition.Value = 0;
+            loaded = true;
+        }
+        /**<summary>Updates the play time in the playback tab.</summary>*/
+        private void UpdatePlayTime() {
 			Dispatcher.Invoke(() => {
 				loaded = false;
 				double currentProgress = Config.Sequencer.CurrentProgress;
@@ -450,26 +464,27 @@ namespace TerrariaMidiPlayer {
 				loaded = true;
 			});
 		}
-		/**<summary>Updates the keybind tooltips.</summary>*/
-		private void UpdateKeybindTooltips() {
-			toggleButtonStop.ToolTip = "Stop midi playback. <";
-			toggleButtonPlay.ToolTip = "Start midi playback. <";
-			toggleButtonPause.ToolTip = "Pause midi playback. <";
-			checkBoxMounted.ToolTip = "Needed to calculate the center of the player. <";
-			// Yes I know stop can't "officially" be unassigned.
-			toggleButtonStop.ToolTip += (Config.Keybinds.Stop == Keybind.None ? "No Keybind" : Config.Keybinds.Stop.ToProperString()) + ">";
-			toggleButtonPlay.ToolTip += (Config.Keybinds.Play == Keybind.None ? "No Keybind" : Config.Keybinds.Play.ToProperString()) + ">";
-			toggleButtonPause.ToolTip += (Config.Keybinds.Pause == Keybind.None ? "No Keybind" : Config.Keybinds.Pause.ToProperString()) + ">";
-			checkBoxMounted.ToolTip += (Config.Keybinds.Pause == Keybind.None ? "No Keybind" : Config.Keybinds.Mount.ToProperString()) + ">";
-			menuItemExit.InputGestureText = Config.Keybinds.Close.ToProperString();
-		}
+        /**<summary>Updates the keybind tooltips.</summary>*/
+        private void UpdateKeybindTooltips()
+        {
+            toggleButtonStop.ToolTip = "停止MIDI播放。 <";
+            toggleButtonPlay.ToolTip = "开始MIDI播放。 <";
+            toggleButtonPause.ToolTip = "暂停MIDI播放。 <";
+            checkBoxMounted.ToolTip = "需要计算玩家中心。 <";
+            // 我知道“停止”键不能“正式”被取消绑定。
+            toggleButtonStop.ToolTip += (Config.Keybinds.Stop == Keybind.None ? "无键位绑定" : Config.Keybinds.Stop.ToProperString()) + ">";
+            toggleButtonPlay.ToolTip += (Config.Keybinds.Play == Keybind.None ? "无键位绑定" : Config.Keybinds.Play.ToProperString()) + ">";
+            toggleButtonPause.ToolTip += (Config.Keybinds.Pause == Keybind.None ? "无键位绑定" : Config.Keybinds.Pause.ToProperString()) + ">";
+            checkBoxMounted.ToolTip += (Config.Keybinds.Mount == Keybind.None ? "无键位绑定" : Config.Keybinds.Mount.ToProperString()) + ">";
+            menuItemExit.InputGestureText = Config.Keybinds.Close.ToProperString();
+        }
 
-		#endregion
-		//=========== HELPERS ============
-		#region Helpers
+        #endregion
+        //=========== HELPERS ============
+        #region Helpers
 
-		/**<summary>Gets the name of the specified note.</summary>*/
-		private string NoteToString(int note) {
+        /**<summary>Gets the name of the specified note.</summary>*/
+        private string NoteToString(int note) {
 			string[] notes = { "C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B" };
 			string[] flatNotes = { "", "D\u266D", "", "E\u266D", "", "", "G\u266D", "", "A\u266D", "", "B\u266D", "" };
 			int semitone = note % 12;

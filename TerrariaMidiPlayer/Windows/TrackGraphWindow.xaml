@@ -25,7 +25,38 @@
         <Label Content="音轨" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="listTracks" Margin="10,32,0,93" SelectionChanged="OnTrackChanged" HorizontalAlignment="Left" Width="100"/>
 
-        <!-- 其他UI元素 -->
+        <Border Margin="123,8,10,0" Background="White" BorderBrush="#FF828790" BorderThickness="1" VerticalAlignment="Top" Height="19">
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                <Rectangle StrokeThickness="2" Width="10" Height="10" Fill="LightYellow" Stroke="Gold" Margin="10,0,0,0" VerticalAlignment="Center"/>
+                <TextBlock Text="乐器范围" FontSize="10" VerticalAlignment="Center" Margin="5,0,10,0" />
+                <CheckBox x:Name="checkBoxValid" IsChecked="True" Click="OnValidChecked">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse StrokeThickness="0" Width="6" Height="6" Fill="Violet" VerticalAlignment="Center"/>
+                        <TextBlock Text="有效音符" FontSize="10" VerticalAlignment="Center" Margin="4,0,10,0" />
+                    </StackPanel>
+                </CheckBox>
+                <CheckBox x:Name="checkBoxWrapped" IsChecked="True" Click="OnWrappedChecked">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse StrokeThickness="0" Width="6" Height="6" Fill="Red" VerticalAlignment="Center"/>
+                        <TextBlock Text="环绕音符" FontSize="10" VerticalAlignment="Center" Margin="4,0,10,0" />
+                    </StackPanel>
+                </CheckBox>
+                <CheckBox x:Name="checkBoxSkipped" IsChecked="True" Click="OnSkippedChecked">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <Ellipse StrokeThickness="0" Width="6" Height="6" Fill="Blue" VerticalAlignment="Center"/>
+                        <TextBlock Text="跳过音符" FontSize="10" VerticalAlignment="Center" Margin="4,0,0,0" />
+                    </StackPanel>
+                </CheckBox>
+            </StackPanel>
+        </Border>
+        <Border Margin="123,32,10,93" Background="White" BorderBrush="#FF828790" BorderThickness="1">
+            <Grid>
+                <local:TrackGraph x:Name="trackGraph"/>
+                <Grid x:Name="playArea" Margin="34,12,6,11" Background="Transparent" MouseLeftButtonDown="OnLeftMouseDown" MouseLeftButtonUp="OnLeftMouseUp" MouseMove="OnMouseMove">
+                    <Rectangle x:Name="playMarker" Width="2" Stroke="Cyan" HorizontalAlignment="Left" />
+                </Grid>
+            </Grid>
+        </Border>
 
         <Label x:Name="labelHighestNote" Content="最高音符:" HorizontalAlignment="Left" Margin="10,0,0,60" VerticalAlignment="Bottom"/>
         <Label x:Name="labelLowestNote" Content="最低音符:" HorizontalAlignment="Left" Margin="10,0,0,34" VerticalAlignment="Bottom"/>

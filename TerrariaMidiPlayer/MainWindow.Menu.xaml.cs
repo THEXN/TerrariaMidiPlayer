@@ -74,7 +74,11 @@ namespace TerrariaMidiPlayer {
 		private void OnOpenOnGitHub(object sender, RoutedEventArgs e) {
 			Process.Start("https://github.com/trigger-death/TerrariaMidiPlayer");
 		}
-		private void OnAboutInstruments(object sender, RoutedEventArgs e) {
+        private void OnOpenOnGitHubCn(object sender, RoutedEventArgs e)
+        {
+            Process.Start("https://github.com/THEXN/TerrariaMidiPlayer");
+        }
+        private void OnAboutInstruments(object sender, RoutedEventArgs e) {
 			Process.Start("https://terraria.gamepedia.com/Harp");
 		}
 

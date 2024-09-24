@@ -98,7 +98,7 @@
                         <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/Github.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="在GitHub上查看中文版" Click="OnOpenOnGitHub">
+                <MenuItem Header="在GitHub上查看中文版" Click="OnOpenOnGitHubCn">
                     <MenuItem.Icon>
                         <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/Github.png" />
                     </MenuItem.Icon>

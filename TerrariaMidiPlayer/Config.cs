@@ -15,31 +15,31 @@ using TerrariaMidiPlayer.Windows;
 namespace TerrariaMidiPlayer {
 	/**<summary>Data about mounts.</summary>*/
 	public struct Mount {
-		//========== CONSTANTS ===========
-		#region Constants
+        //========== CONSTANTS ===========
+        #region Constants
 
-		/**<summary>The list of mounts in the game. Drill mount is excluded.</summary>*/
-		public static readonly Mount[] Mounts = {
-			new Mount("No Mount", 0),
-			new Mount("Bunny", 17),
-			new Mount("Slime", 15),
-			new Mount("Bee", 12),
-			new Mount("Turtle", 20),
-			new Mount("Basilisk", 6),
-			new Mount("Unicorn", 27),
-			new Mount("Reindeer", 13),
-			new Mount("Pigron", 15),
-			new Mount("Fishron", 11),
-			new Mount("Scutlix", 12),
-			new Mount("UFO", 12)
+        /**<summary>The list of mounts in the game. Drill mount is excluded.</summary>*/
+        public static readonly Mount[] Mounts = {
+            new Mount("无坐骑", 0), // No Mount
+			new Mount("兔子", 17),  // Bunny
+			new Mount("史莱姆", 15), // Slime
+			new Mount("蜜蜂", 12),   // Bee
+			new Mount("海龟", 20),   // Turtle
+			new Mount("蛇怪", 6),    // Basilisk
+			new Mount("独角兽", 27),  // Unicorn
+			new Mount("驯鹿", 13),   // Reindeer
+			new Mount("猪龙", 15),   // Pigron
+			new Mount("鱼龙", 11),   // Fishron
+			new Mount("扰脑器", 12), // Scutlix
+			new Mount("UFO", 12)     // UFO
 		};
 
-		#endregion
-		//=========== MEMBERS ============
-		#region Members
+        #endregion
+        //=========== MEMBERS ============
+        #region Members
 
-		/**<summary>The name of the mount.</summary>*/
-		public string Name;
+        /**<summary>The name of the mount.</summary>*/
+        public string Name;
 		/**<summary>The height offset of the mount in 1x1 pixels.</summary>*/
 		public int Offset;
 

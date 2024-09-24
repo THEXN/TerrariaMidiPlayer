@@ -363,28 +363,34 @@ namespace TerrariaMidiPlayer.Controls {
 					)));
 				}
 			}
-			
-			// Draw the octave lines and labels
-			for (int i = 0; i <= OctaveRange; i++) {
-				double y = TrackGraph.SpacingY + ActualHeightSpacing / OctaveRange * i;
-				d.DrawLine(new Pen(Brushes.LightGray, 1),
-					Floor(new Point(SpacingLeft, y)),
-					Floor(new Point(ActualWidth - SpacingRight, y)));
 
-				var formattedText = new FormattedText(
-					"C" + (highestOctave - i),
-					CultureInfo.GetCultureInfo("en-us"),
-					FlowDirection.LeftToRight,
-					new Typeface("Segoe UI"),
-					12,
-					Brushes.Black
-				);
-				y -= formattedText.Height / 2;
-				d.DrawText(formattedText, Floor(new Point(SpacingLabel, y)));
-			}
+            // Draw the octave lines and labels
+            for (int i = 0; i <= OctaveRange; i++)
+            {
+                double y = TrackGraph.SpacingY + ActualHeightSpacing / OctaveRange * i;
+                d.DrawLine(new Pen(Brushes.LightGray, 1),
+                    Floor(new Point(SpacingLeft, y)),
+                    Floor(new Point(ActualWidth - SpacingRight, y)));
 
-			// Stop using the guidelines
-			d.Pop();
+                // 获取 DPI 信息
+                double pixelsPerDip = VisualTreeHelper.GetDpi(this).PixelsPerDip;
+
+                var formattedText = new FormattedText(
+                    "C" + (highestOctave - i),
+                    CultureInfo.GetCultureInfo("en-us"),
+                    FlowDirection.LeftToRight,
+                    new Typeface("Segoe UI"),
+                    12,
+                    Brushes.Black,
+                    null, // TextFormattingMode
+                    pixelsPerDip // 添加 PixelsPerDip 参数
+                );
+                y -= formattedText.Height / 2;
+                d.DrawText(formattedText, Floor(new Point(SpacingLabel, y)));
+            }
+
+            // Stop using the guidelines
+            d.Pop();
 
 			// The milliseconds of the next playable note
 			int nextPlayable = 0;

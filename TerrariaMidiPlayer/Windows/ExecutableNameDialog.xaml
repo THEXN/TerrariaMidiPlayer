@@ -3,13 +3,13 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        Title="Executable Names" Background="#FFF9F9F9" Icon="/TerrariaMidiPlayer;component/Resources/Icons/TerrariaIcon.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
-    
+        Title="可执行文件名" Background="#FFF9F9F9" Icon="/TerrariaMidiPlayer;component/Resources/Icons/TerrariaIcon.png" WindowStartupLocation="CenterOwner" ResizeMode="NoResize" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
+
     <Grid Height="224" Width="290">
         <TextBox x:Name="textBox" AcceptsReturn="True" Height="118" Margin="20,59,20,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
-        <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
-        <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,95,10" VerticalAlignment="Bottom" Width="75" Click="OnOKClicked"/>
-        <Label Content="Enter the names of your Terraria executable" HorizontalAlignment="Left" Margin="20,9,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
-        <Label Content="without the &quot;.exe&quot;, separated by new lines." HorizontalAlignment="Left" Margin="20,28,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Button Content="取消" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+        <Button Content="确定" HorizontalAlignment="Right" Margin="0,0,95,10" VerticalAlignment="Bottom" Width="75" Click="OnOKClicked"/>
+        <Label Content="请输入您的 Terraria 可执行文件的名称" HorizontalAlignment="Left" Margin="20,9,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
+        <Label Content="不包括 &quot;.exe&quot; 扩展名，并用换行符分隔。" HorizontalAlignment="Left" Margin="20,28,0,0" VerticalAlignment="Top" Padding="0,5,5,5"/>
     </Grid>
 </Window>

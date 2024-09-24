@@ -5,12 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TerrariaMidiPlayer.Controls"
         mc:Ignorable="d"
-        Title="Credits" Background="#FFF0F0F0" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" SnapsToDevicePixels="True" UseLayoutRounding="True" Icon="/Resources/Icons/Credits.png" SizeToContent="WidthAndHeight">
+        Title="鸣谢" Background="#FFF0F0F0" ResizeMode="NoResize" ShowInTaskbar="False" WindowStartupLocation="CenterOwner" SnapsToDevicePixels="True" UseLayoutRounding="True" Icon="/Resources/Icons/Credits.png" SizeToContent="WidthAndHeight">
 
     <Grid x:Name="clientArea" Width="315" Height="326">
         <StackPanel Margin="10,10,10,37">
             <TextBlock TextWrapping="Wrap" Padding="5">
-                Midi reader and player powered by a modified version of  <Hyperlink NavigateUri="https://github.com/tebjan/Sanford.Multimedia.Midi" RequestNavigate="OnRequestNavigate">Sanford.Multimedia.Midi</Hyperlink>.
+                MIDI 读取和播放功能基于修改版的 <Hyperlink NavigateUri="https://github.com/tebjan/Sanford.Multimedia.Midi" RequestNavigate="OnRequestNavigate">Sanford.Multimedia.Midi</Hyperlink>。
             </TextBlock>
             <Separator Height="11" Margin="20,0">
                 <Separator.Background>
@@ -22,7 +22,7 @@
             </Separator>
 
             <TextBlock TextWrapping="Wrap" Padding="5">
-                Global key reader powered by  <Hyperlink NavigateUri="https://github.com/gmamaladze/globalmousekeyhook" RequestNavigate="OnRequestNavigate">MouseKeyHook</Hyperlink>.
+                全局键位读取功能基于 <Hyperlink NavigateUri="https://github.com/gmamaladze/globalmousekeyhook" RequestNavigate="OnRequestNavigate">MouseKeyHook</Hyperlink>。
             </TextBlock>
             <Separator Height="11" Margin="20,0">
                 <Separator.Background>
@@ -34,7 +34,7 @@
             </Separator>
 
             <TextBlock TextWrapping="Wrap" Padding="5">
-                Numeric spinners powered by  <Hyperlink NavigateUri="https://github.com/xceedsoftware/wpftoolkit" RequestNavigate="OnRequestNavigate">Extended WPF Toolkit</Hyperlink>.
+                数字输入框功能基于 <Hyperlink NavigateUri="https://github.com/xceedsoftware/wpftoolkit" RequestNavigate="OnRequestNavigate">Extended WPF Toolkit</Hyperlink>。
             </TextBlock>
             <Separator Height="11" Margin="20,0">
                 <Separator.Background>
@@ -46,20 +46,7 @@
             </Separator>
 
             <TextBlock TextWrapping="Wrap" Padding="5">
-                Syncing TCP server modified from  <Hyperlink NavigateUri="https://www.codeproject.com/Articles/488668/Csharp-TCP-Server" RequestNavigate="OnRequestNavigate">C# TCP Server</Hyperlink>.
-            </TextBlock>
-            <Separator Height="11" Margin="20,0">
-                <Separator.Background>
-                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
-                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
-                        <GradientStop Color="#00A0A0A0" Offset="1"/>
-                    </LinearGradientBrush>
-                </Separator.Background>
-            </Separator>
-
-
-            <TextBlock TextWrapping="Wrap" Padding="5">
-                ABC Notation reader modified from  <Hyperlink NavigateUri="https://github.com/Enichan/textplayer" RequestNavigate="OnRequestNavigate">Text Player</Hyperlink>.
+                同步 TCP 服务器基于 <Hyperlink NavigateUri="https://www.codeproject.com/Articles/488668/Csharp-TCP-Server" RequestNavigate="OnRequestNavigate">C# TCP 服务器</Hyperlink> 进行了修改。
             </TextBlock>
             <Separator Height="11" Margin="20,0">
                 <Separator.Background>
@@ -71,7 +58,7 @@
             </Separator>
 
             <TextBlock TextWrapping="Wrap" Padding="5">
-                Most icons from or modified from <Hyperlink NavigateUri="http://p.yusukekamiyamane.com/" RequestNavigate="OnRequestNavigate">Fugue Icon Pack</Hyperlink>.
+                ABC 记谱法读取功能基于 <Hyperlink NavigateUri="https://github.com/Enichan/textplayer" RequestNavigate="OnRequestNavigate">Text Player</Hyperlink> 进行了修改。
             </TextBlock>
             <Separator Height="11" Margin="20,0">
                 <Separator.Background>
@@ -83,10 +70,22 @@
             </Separator>
 
             <TextBlock TextWrapping="Wrap" Padding="5">
-                Remaining images from or modified from Terraria.
+                大部分图标来自或基于 <Hyperlink NavigateUri="http://p.yusukekamiyamane.com/" RequestNavigate="OnRequestNavigate">Fugue 图标包</Hyperlink>。
+            </TextBlock>
+            <Separator Height="11" Margin="20,0">
+                <Separator.Background>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="1,0.5">
+                        <GradientStop Color="#FFA0A0A0" Offset="0"/>
+                        <GradientStop Color="#00A0A0A0" Offset="1"/>
+                    </LinearGradientBrush>
+                </Separator.Background>
+            </Separator>
+
+            <TextBlock TextWrapping="Wrap" Padding="5">
+                剩余图像来自或基于 Terraria。
             </TextBlock>
         </StackPanel>
 
-        <Button Content="Close" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="80" IsDefault="True" IsCancel="True"/>
+        <Button Content="关闭" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="80" IsDefault="True" IsCancel="True"/>
     </Grid>
 </Window>

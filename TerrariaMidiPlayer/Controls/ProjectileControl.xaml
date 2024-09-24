@@ -7,10 +7,10 @@
              mc:Ignorable="d" Height="180.772" Width="130.194" Loaded="OnControlLoaded" UseLayoutRounding="True" HorizontalAlignment="Left" VerticalAlignment="Top">
     <Grid>
 
-        <GroupBox x:Name="groupBox" Header="Projectiles" TabIndex="2147483645" Margin="0,0,0,2">
+        <GroupBox x:Name="groupBox" Header="弹幕控制" TabIndex="2147483645" Margin="0,0,0,2">
             <Grid Margin="0">
-                <Label Content="Range" HorizontalAlignment="Left" Margin="5,129,0,0" VerticalAlignment="Top"/>
-                <Label Content="Angle" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,101,0,0"/>
+                <Label Content="范围" HorizontalAlignment="Left" Margin="5,129,0,0" VerticalAlignment="Top"/>
+                <Label Content="角度" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="7,101,0,0"/>
                 <local:IntSpinner x:Name="numericAngle" Increment="5" Maximum="359" Value="0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="56" Margin="53,103,0,0" ValueChanged="OnAngleValueChanged"/>
                 <local:IntSpinner x:Name="numericRange" Increment="5" Maximum="360" Value="360" HorizontalAlignment="Left" VerticalAlignment="Top" Width="56" Margin="53,131,0,0" ValueChanged="OnRangeValueChanged"/>
             </Grid>

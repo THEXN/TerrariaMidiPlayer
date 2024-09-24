@@ -3,31 +3,31 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:local="clr-namespace:TerrariaMidiPlayer.Controls"
-        Title="Change Keybinds" Background="#FFF9F9F9" Icon="/Resources/Icons/Keybinds.png" SnapsToDevicePixels="True" UseLayoutRounding="True" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
-    
-    <Grid Height="320" Width="284">
-        <Label Content="Play" HorizontalAlignment="Left" Margin="37,20,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <local:KeybindReader x:Name="keybindReaderPlay" Margin="74,22,0,0"  KeybindChanged="OnKeybindChanged"/>
-        <Label Content="Pause" HorizontalAlignment="Left" Margin="28,51,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <local:KeybindReader x:Name="keybindReaderPause" Margin="74,53,0,0"  KeybindChanged="OnKeybindChanged"/>
-        <Label Content="Stop" HorizontalAlignment="Left" Margin="34,82,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <local:KeybindReader x:Name="keybindReaderStop" Margin="74,84,0,0" KeybindChanged="OnKeybindChanged" />
-        
-        <Separator Height="7" Margin="20,113,20,0" VerticalAlignment="Top"/>
-        
-        <Label Content="Close" HorizontalAlignment="Left" Margin="30,123,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <local:KeybindReader x:Name="keybindReaderClose" Margin="74,125,0,0" KeybindChanged="OnKeybindChanged" />
-        <Label Content="Mount" HorizontalAlignment="Left" Margin="24,154,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
-        <local:KeybindReader x:Name="keybindReaderMount" Margin="74,156,0,0" KeybindChanged="OnKeybindChanged" />
-        
-        <Separator Height="7" Margin="24,185,16,0" VerticalAlignment="Top"/>
-        
-        <Label x:Name="label" Content="When Terraria is not Focused:" HorizontalAlignment="Left" Margin="25,192,0,0" VerticalAlignment="Top"/>
-        <CheckBox x:Name="checkBoxClose" Content="Enable Close" HorizontalAlignment="Left" Margin="37,223,0,0" VerticalAlignment="Top" Padding="4,-1,0,0"/>
-        <CheckBox x:Name="checkBoxPlayback" Content="Enable Playback" HorizontalAlignment="Left" Margin="144,223,0,0" VerticalAlignment="Top" Padding="4,-1,0,0"/>
+        Title="更改键位绑定" Background="#FFF9F9F9" Icon="/Resources/Icons/Keybinds.png" SnapsToDevicePixels="True" UseLayoutRounding="True" ResizeMode="NoResize" WindowStartupLocation="CenterOwner" SizeToContent="WidthAndHeight" ShowInTaskbar="False">
 
-        <Button Content="OK" HorizontalAlignment="Right" Margin="0,0,95,10" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="OnOKClicked"/>
-        <Button Content="Cancel" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
-        <CheckBox x:Name="checkBoxDisableMount" Content="Disable Mount when Talking in Terraria" HorizontalAlignment="Left" Margin="37,254,0,0" VerticalAlignment="Top" Padding="4,-1,0,0" ToolTip="This only guesses if you are talking by keeping track of the toggled state of the enter key"/>
+    <Grid Height="320" Width="284">
+        <Label Content="播放" HorizontalAlignment="Left" Margin="37,20,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <local:KeybindReader x:Name="keybindReaderPlay" Margin="74,22,0,0" KeybindChanged="OnKeybindChanged"/>
+        <Label Content="暂停" HorizontalAlignment="Left" Margin="28,51,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <local:KeybindReader x:Name="keybindReaderPause" Margin="74,53,0,0" KeybindChanged="OnKeybindChanged"/>
+        <Label Content="停止" HorizontalAlignment="Left" Margin="34,82,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <local:KeybindReader x:Name="keybindReaderStop" Margin="74,84,0,0" KeybindChanged="OnKeybindChanged" />
+
+        <Separator Height="7" Margin="20,113,20,0" VerticalAlignment="Top"/>
+
+        <Label Content="关闭" HorizontalAlignment="Left" Margin="30,123,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <local:KeybindReader x:Name="keybindReaderClose" Margin="74,125,0,0" KeybindChanged="OnKeybindChanged" />
+        <Label Content="坐骑" HorizontalAlignment="Left" Margin="24,154,0,0" VerticalAlignment="Top" HorizontalContentAlignment="Right"/>
+        <local:KeybindReader x:Name="keybindReaderMount" Margin="74,156,0,0" KeybindChanged="OnKeybindChanged" />
+
+        <Separator Height="7" Margin="24,185,16,0" VerticalAlignment="Top"/>
+
+        <Label x:Name="label" Content="当Terraria未聚焦时：" HorizontalAlignment="Left" Margin="25,192,0,0" VerticalAlignment="Top"/>
+        <CheckBox x:Name="checkBoxClose" Content="启用关闭" HorizontalAlignment="Left" Margin="37,223,0,0" VerticalAlignment="Top" Padding="4,-1,0,0"/>
+        <CheckBox x:Name="checkBoxPlayback" Content="启用播放" HorizontalAlignment="Left" Margin="144,223,0,0" VerticalAlignment="Top" Padding="4,-1,0,0"/>
+
+        <Button Content="确定" HorizontalAlignment="Right" Margin="0,0,95,10" VerticalAlignment="Bottom" Width="75" IsDefault="True" Click="OnOKClicked"/>
+        <Button Content="取消" HorizontalAlignment="Right" Margin="0,0,10,10" VerticalAlignment="Bottom" Width="75" IsCancel="True"/>
+        <CheckBox x:Name="checkBoxDisableMount" Content="在Terraria中聊天时禁用坐骑" HorizontalAlignment="Left" Margin="37,254,0,0" VerticalAlignment="Top" Padding="4,-1,0,0" ToolTip="这仅通过跟踪回车键的切换状态来猜测你是否在聊天"/>
     </Grid>
 </Window>

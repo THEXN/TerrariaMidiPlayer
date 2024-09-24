@@ -31,75 +31,80 @@
                     <GradientStop Color="#FFE6E8EB" Offset="1"/>
                 </LinearGradientBrush>
             </Menu.Background>
-            <MenuItem Header="File">
-                <MenuItem x:Name="menuItemExit" Header="Exit" Click="OnExit" InputGestureText="Escape">
+            <MenuItem Header="文件">
+                <MenuItem x:Name="menuItemExit" Header="退出" Click="OnExit" InputGestureText="Escape">
                     <MenuItem.Icon>
                         <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/Exit.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-            <MenuItem Header="Options">
+            <MenuItem Header="选项">
                 <MenuItem Header="Overlay" IsChecked="True" IsCheckable="True" Visibility="Collapsed">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/Overlay.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Keybinds..." Click="OnChangeKeybinds">
+                <MenuItem Header="按键绑定..." Click="OnChangeKeybinds">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/Keybinds.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Executable Names..." Click="OnExecutableName">
+                <MenuItem Header="可执行文件名..." Click="OnExecutableName">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/TerrariaIcon.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="menuItemTrackNames" Header="Use Midi Track Names" Click="OnUseTrackNames" IsCheckable="True">
+                <MenuItem x:Name="menuItemTrackNames" Header="使用MIDI轨道名称" Click="OnUseTrackNames" IsCheckable="True">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/TrackNames.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="menuItemWrapPianoMode" Header="Wrap in Piano Mode" Click="OnPianoModeWrap" IsCheckable="True">
+                <MenuItem x:Name="menuItemWrapPianoMode" Header="钢琴模式下循环" Click="OnPianoModeWrap" IsCheckable="True">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/PianoWrap.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem x:Name="menuItemSkipPianoMode" Header="Skip in Piano Mode" Click="OnPianoModeSkip" IsCheckable="True">
+                <MenuItem x:Name="menuItemSkipPianoMode" Header="钢琴模式下跳过" Click="OnPianoModeSkip" IsCheckable="True">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/PianoSkip.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator Margin="0"/>
-                <MenuItem Header="Save Config" Click="OnSaveConfig">
+                <MenuItem Header="保存配置" Click="OnSaveConfig">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/SaveConfig.png" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
 
-            <MenuItem Header="Help">
-                <MenuItem Header="About" Click="OnAbout">
+            <MenuItem Header="帮助">
+                <MenuItem Header="关于" Click="OnAbout">
                     <MenuItem.Icon>
                         <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/About.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Help" Click="OnHelp">
+                <MenuItem Header="帮助" Click="OnHelp">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/Help.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="Credits" Click="OnCredits">
+                <MenuItem Header="致谢" Click="OnCredits">
                     <MenuItem.Icon>
                         <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/Credits.png" />
                     </MenuItem.Icon>
                 </MenuItem>
-                <MenuItem Header="View on GitHub" Click="OnOpenOnGitHub">
+                <MenuItem Header="在GitHub上查看" Click="OnOpenOnGitHub">
+                    <MenuItem.Icon>
+                        <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/Github.png" />
+                    </MenuItem.Icon>
+                </MenuItem>
+                <MenuItem Header="在GitHub上查看中文版" Click="OnOpenOnGitHub">
                     <MenuItem.Icon>
                         <Image Source="/TerrariaMidiPlayer;component/Resources/Icons/Github.png" />
                     </MenuItem.Icon>
                 </MenuItem>
                 <Separator Margin="0"/>
-                <MenuItem Header="About Instruments" Click="OnAboutInstruments">
+                <MenuItem Header="关于乐器" Click="OnAboutInstruments">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/TerrariaIcon.png" />
                     </MenuItem.Icon>
@@ -131,12 +136,12 @@
             </Grid>
         </Border>
         <TabControl x:Name="tabControl" Margin="5,5,5,5" UseLayoutRounding="True">
-            <TabItem Header="Playback" IsTabStop="False">
+            <TabItem Header="播放" IsTabStop="False">
                 <Grid Background="#FFF9F9F9">
 
                     <local:ProjectileControl x:Name="projectileControl" Margin="10,7,0,0" ProjectilesChanged="OnProjectileChanged" VerticalAlignment="Top" HorizontalAlignment="Left" Height="181" Width="130"/>
 
-                    <GroupBox Header="Adjustment" Margin="147,7,10,0" VerticalAlignment="Top" Height="179">
+                    <GroupBox Header="调节" Margin="147,7,10,0" VerticalAlignment="Top" Height="179">
                         <Grid>
                             <Label Content="Use Time" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" ToolTip="Instrument use time in frames."/>
                             <local:IntSpinner x:Name="numericUseTime" Margin="71,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Increment="1" Maximum="100" Minimum="2" Value="11" ErrorValue="12" ValueChanged="OnUseTimeChanged"/>
@@ -151,7 +156,7 @@
                             <ComboBox x:Name="comboBoxMount" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="121" SelectionChanged="OnMountChanged"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Midi Player" Margin="10,189,10,8" UseLayoutRounding="True">
+                    <GroupBox Header="Midi 播放" Margin="10,189,10,8" UseLayoutRounding="True">
                         <Grid UseLayoutRounding="True">
                             <Grid VerticalAlignment="Top" Margin="0,5,0,0">
                                 <Grid.ColumnDefinitions>
@@ -184,7 +189,7 @@
                     </GroupBox>
                 </Grid>
             </TabItem>
-            <TabItem x:Name="tabMidiSetup" Header="Midi Setup" IsTabStop="False">
+            <TabItem x:Name="tabMidiSetup" Header="MIDI 配置" IsTabStop="False">
                 <Grid Background="#FFF9F9F9">
                     <Label Content="Tracks" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
                     <ListBox x:Name="listTracks" Margin="10,32,0,0" SelectionChanged="OnTrackChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Height="132" Width="120" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
@@ -216,7 +221,7 @@
                     </Button>
                 </Grid>
             </TabItem>
-            <TabItem Header="Syncing" IsTabStop="False">
+            <TabItem Header="同步中" IsTabStop="False">
                 <Grid Margin="0">
                     <Label Content="Sync Type" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
                     <ComboBox x:Name="comboBoxSyncType" Width="86" Margin="79,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedIndex="0" Padding="4,3" SelectionChanged="OnSyncTypeChanged" IsTabStop="False">

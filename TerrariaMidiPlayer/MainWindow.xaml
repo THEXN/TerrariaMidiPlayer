@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:TerrariaMidiPlayer.Controls"
         xmlns:System="clr-namespace:System;assembly=mscorlib" x:Class="TerrariaMidiPlayer.MainWindow"
         mc:Ignorable="d"
-        Title="Terraria Midi Player" Closing="OnClosing" Icon="App.ico" ResizeMode="CanMinimize" SnapsToDevicePixels="True" UseLayoutRounding="True" Loaded="OnWindowLoaded" Background="#FFCFCCC8" SizeToContent="WidthAndHeight" PreviewMouseDown="OnPreviewMouseDown">
+        Title="泰拉瑞亚 MIDI 播放器" Closing="OnClosing" Icon="App.ico" ResizeMode="CanMinimize" SnapsToDevicePixels="True" UseLayoutRounding="True" Loaded="OnWindowLoaded" Background="#FFCFCCC8" SizeToContent="WidthAndHeight" PreviewMouseDown="OnPreviewMouseDown">
     <Window.Resources>
         <Style TargetType="{x:Type ListBox}">
             <Style.Resources>
@@ -39,7 +39,7 @@
                 </MenuItem>
             </MenuItem>
             <MenuItem Header="选项">
-                <MenuItem Header="Overlay" IsChecked="True" IsCheckable="True" Visibility="Collapsed">
+                <MenuItem Header="覆盖层" IsChecked="True" IsCheckable="True" Visibility="Collapsed">
                     <MenuItem.Icon>
                         <Image Source="Resources/Icons/Overlay.png" />
                     </MenuItem.Icon>
@@ -113,23 +113,23 @@
         </Menu>
         <Border  DockPanel.Dock="Left" BorderBrush="#FF886DB0" BorderThickness="0,0,1,0" HorizontalAlignment="Left" Width="192" Background="#FFEEEEEE">
             <Grid Margin="0">
-                <Label Content="Midis" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                <Label Content="MIDI文件" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
                 <ListBox x:Name="listMidis" Margin="10,31,10,10" SelectionChanged="OnMidiChanged" AllowDrop="True" DragEnter="OnMidiListDragEnter" DragLeave="OnMidiListDragLeave" DragOver="OnMidiListDragOver" Drop="OnMidiListDrop"/>
-                <Label x:Name="labelMidiDrop" Content="Drop Playable Files" Margin="10,31,10,10" Background="#CCF9F9F9" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" IsHitTestVisible="False" Visibility="Hidden" />
+                <Label x:Name="labelMidiDrop" Content="拖放可播放文件" Margin="10,31,10,10" Background="#CCF9F9F9" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" FontSize="18" IsHitTestVisible="False" Visibility="Hidden" />
                 <StackPanel Height="20" Margin="0,8,10,0" VerticalAlignment="Top" HorizontalAlignment="Right" RenderTransformOrigin="0.5,0.5" Orientation="Horizontal">
-                    <Button HorizontalAlignment="Left" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" VerticalAlignment="Top" Width="20" ToolTip="Add Midi" Focusable="False" IsTabStop="False" Height="20" Click="OnAddMidi" Padding="0" Margin="0,0,2,0">
+                    <Button HorizontalAlignment="Left" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" VerticalAlignment="Top" Width="20" ToolTip="添加MIDI" Focusable="False" IsTabStop="False" Height="20" Click="OnAddMidi" Padding="0" Margin="0,0,2,0">
                         <Image Source="Resources/Icons/MidiAdd.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}" />
                     </Button>
-                    <Button x:Name="buttonRemoveMidi" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="Remove Midi" Focusable="False" IsTabStop="False" Height="20" Click="OnRemoveMidi" Padding="0" Margin="0,0,2,0">
+                    <Button x:Name="buttonRemoveMidi" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="移除MIDI" Focusable="False" IsTabStop="False" Height="20" Click="OnRemoveMidi" Padding="0" Margin="0,0,2,0">
                         <Image Source="Resources/Icons/MidiRemove.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}" />
                     </Button>
-                    <Button x:Name="buttonEditMidiName" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="Edit Midi Name" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="0,0,2,0" Click="OnEditMidiName">
+                    <Button x:Name="buttonEditMidiName" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="编辑MIDI名称" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="0,0,2,0" Click="OnEditMidiName">
                         <Image Source="Resources/Icons/EditName.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                     </Button>
-                    <Button x:Name="buttonMoveMidiUp" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="Move Midi Up" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="0,0,2,0" Click="OnMoveMidiUp">
+                    <Button x:Name="buttonMoveMidiUp" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="上移MIDI" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="0,0,2,0" Click="OnMoveMidiUp">
                         <Image Source="Resources/Icons/MoveUp.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                     </Button>
-                    <Button x:Name="buttonMoveMidiDown" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="20" ToolTip="Move Midi Down" Focusable="False" IsTabStop="False" Height="20" Padding="0" Click="OnMoveMidiDown">
+                    <Button x:Name="buttonMoveMidiDown" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" Margin="0" VerticalAlignment="Top" Width="20" ToolTip="下移MIDI" Focusable="False" IsTabStop="False" Height="20" Padding="0" Click="OnMoveMidiDown">
                         <Image Source="Resources/Icons/MoveDown.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}" />
                     </Button>
                 </StackPanel>
@@ -143,16 +143,16 @@
 
                     <GroupBox Header="调节" Margin="147,7,10,0" VerticalAlignment="Top" Height="179">
                         <Grid>
-                            <Label Content="Use Time" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" ToolTip="Instrument use time in frames."/>
+                            <Label Content="使用时间" HorizontalAlignment="Left" Margin="8,10,0,0" VerticalAlignment="Top" ToolTip="乐器使用的帧数。"/>
                             <local:IntSpinner x:Name="numericUseTime" Margin="71,12,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Increment="1" Maximum="100" Minimum="2" Value="11" ErrorValue="12" ValueChanged="OnUseTimeChanged"/>
-                            <Label Content="Click Time" HorizontalAlignment="Left" Margin="3,37,0,0" VerticalAlignment="Top" ToolTip="The duration the mouse is held down for in milliseconds.&#x0a;Longer means the game is more likely to register the click."/>
+                            <Label Content="点击时间" HorizontalAlignment="Left" Margin="3,37,0,0" VerticalAlignment="Top" ToolTip="鼠标按下持续的时间（毫秒）。&#x0a;时间越长，游戏越有可能识别点击。"/>
                             <local:IntSpinner x:Name="numericClickTime" Margin="71,39,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Increment="1" Maximum="500" Value="40" ValueChanged="OnClickTimeChanged" Minimum="18" IsManipulationEnabled="True"/>
                             <local:IntSpinner x:Name="numericChecks" Margin="71,66,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" Width="60" Increment="1" Maximum="10000" Value="20" ValueChanged="OnChecksChanged"/>
-                            <CheckBox x:Name="checkBoxChecks" Content="Checks" HorizontalAlignment="Left" Margin="8,70,0,0" VerticalAlignment="Top" Click="OnChecksEnabledClicked" IsChecked="True" Padding="4,-1,5,0" ToolTip="Checks to make sure Terraria is the active window when playing a song.&#x0a;The higher the number, the more notes will pass before it checks again."/>
+                            <CheckBox x:Name="checkBoxChecks" Content="检查" HorizontalAlignment="Left" Margin="8,70,0,0" VerticalAlignment="Top" Click="OnChecksEnabledClicked" IsChecked="True" Padding="4,-1,5,0" ToolTip="确保在播放歌曲时Terraria是活动窗口。&#x0a;数值越高，在再次检查前通过的音符越多。"/>
 
-                            <Label Content="Mount" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" ToolTip="Needed to calculate the center of the player." Visibility="Hidden"/>
-                            <CheckBox x:Name="checkBoxMounted" Content="Mounted" HorizontalAlignment="Left" Margin="8,104,0,0" VerticalAlignment="Top" Click="OnMountedChanged" Padding="4,-1,5,0" ToolTip="Needed to calculate the center of the player."/>
-                            <CheckBox x:Name="checkBoxTalking" Content="Talk" HorizontalAlignment="Left" Margin="86,104,0,0" VerticalAlignment="Top" Click="OnTalkingChanged" Padding="4,-1,5,0" ToolTip="The mount keybind will not be toggled when talking."/>
+                            <Label Content="坐骑" HorizontalAlignment="Left" Margin="10,98,0,0" VerticalAlignment="Top" ToolTip="需要计算玩家中心位置。" Visibility="Hidden"/>
+                            <CheckBox x:Name="checkBoxMounted" Content="已骑乘" HorizontalAlignment="Left" Margin="8,104,0,0" VerticalAlignment="Top" Click="OnMountedChanged" Padding="4,-1,5,0" ToolTip="需要计算玩家中心位置。"/>
+                            <CheckBox x:Name="checkBoxTalking" Content="对话中" HorizontalAlignment="Left" Margin="86,104,0,0" VerticalAlignment="Top" Click="OnTalkingChanged" Padding="4,-1,5,0" ToolTip="当处于对话状态时，坐骑键绑定不会被切换。"/>
                             <ComboBox x:Name="comboBoxMount" HorizontalAlignment="Left" Margin="10,125,0,0" VerticalAlignment="Top" Width="121" SelectionChanged="OnMountChanged"/>
                         </Grid>
                     </GroupBox>
@@ -166,21 +166,22 @@
                                 </Grid.ColumnDefinitions>
                                 <Separator Height="20" VerticalAlignment="Top" Margin="10,0,0,0" />
                                 <StackPanel Height="20" HorizontalAlignment="Left" VerticalAlignment="Top" Orientation="Horizontal" Margin="0" Grid.Column="1">
-                                    <ToggleButton x:Name="toggleButtonPiano" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="6,0,2,0" Click="OnPianoToggled" ToolTip="Piano Mode: Play midi in program instead of Terraria">
+                                    <ToggleButton x:Name="toggleButtonPiano" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="6,0,2,0" Click="OnPianoToggled" ToolTip="钢琴模式：在程序中而不是Terraria内播放MIDI">
                                         <Image Source="Resources/Icons/Piano.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                                     </ToggleButton>
                                     <Separator Style="{StaticResource {x:Static ToolBar.SeparatorStyleKey}}"/>
-                                    <ToggleButton x:Name="toggleButtonStop" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="2,0,0,0" Click="OnStopToggled" IsChecked="True" ToolTip="Stop midi playback">
+                                    <ToggleButton x:Name="toggleButtonStop" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="2,0,0,0" Click="OnStopToggled" IsChecked="True" ToolTip="停止MIDI播放">
                                         <Image Source="Resources/Icons/Stop.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="toggleButtonPlay" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="2,0,0,0" Click="OnPlayToggled" ToolTip="Start midi playback">
+                                    <ToggleButton x:Name="toggleButtonPlay" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="2,0,0,0" Click="OnPlayToggled" ToolTip="开始MIDI播放">
                                         <Image Source="Resources/Icons/Play.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                                     </ToggleButton>
-                                    <ToggleButton x:Name="toggleButtonPause" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="2,0,0,0" Click="OnPauseToggled" ToolTip="Pause midi playback">
+                                    <ToggleButton x:Name="toggleButtonPause" Style="{StaticResource {x:Static ToolBar.ToggleButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="2,0,0,0" Click="OnPauseToggled" ToolTip="暂停MIDI播放">
                                         <Image Source="Resources/Icons/Pause.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                                     </ToggleButton>
                                     <Label x:Name="labelMidiPosition" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,6,0" Content="-:--/-:--" HorizontalContentAlignment="Right" Padding="0" VerticalContentAlignment="Center" Height="20" MinWidth="52" Width="Auto"/>
                                 </StackPanel>
+                                <Separator Height="20" VerticalAlignment="Top" Margin="0,0,10,0" Grid.Column="2" />
                                 <Separator Height="20" VerticalAlignment="Top" Margin="0,0,10,0" Grid.Column="2" />
                             </Grid>
 
@@ -191,79 +192,77 @@
             </TabItem>
             <TabItem x:Name="tabMidiSetup" Header="MIDI 配置" IsTabStop="False">
                 <Grid Background="#FFF9F9F9">
-                    <Label Content="Tracks" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+                    <Label Content="音轨" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
                     <ListBox x:Name="listTracks" Margin="10,32,0,0" SelectionChanged="OnTrackChanged" HorizontalAlignment="Left" VerticalAlignment="Top" Height="132" Width="120" ScrollViewer.HorizontalScrollBarVisibility="Disabled"/>
-                    <Label x:Name="labelHighestNote" Content="Highest Note:" HorizontalAlignment="Left" Margin="135,32,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="labelLowestNote" Content="Lowest Note:" HorizontalAlignment="Left" Margin="135,57,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="labelChords" Content="Chords:" HorizontalAlignment="Left" Margin="135,83,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="labelNotes" Content="Notes:" HorizontalAlignment="Left" Margin="135,109,0,0" VerticalAlignment="Top"/>
-                    <CheckBox x:Name="checkBoxTrackEnabled" Content="Enabled" HorizontalAlignment="Right" Margin="0,119,12,0" VerticalAlignment="Top" Click="OnTrackEnabledClicked" IsChecked="True" Padding="4,-1,5,0" RenderTransformOrigin="0.516,5.667"/>
-                    <Label Content="Octave Offset" HorizontalAlignment="Right" Margin="0,140,81,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelHighestNote" Content="最高音符：" HorizontalAlignment="Left" Margin="135,32,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelLowestNote" Content="最低音符：" HorizontalAlignment="Left" Margin="135,57,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelChords" Content="和弦：" HorizontalAlignment="Left" Margin="135,83,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelNotes" Content="音符：" HorizontalAlignment="Left" Margin="135,109,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="checkBoxTrackEnabled" Content="启用" HorizontalAlignment="Right" Margin="0,119,12,0" VerticalAlignment="Top" Click="OnTrackEnabledClicked" IsChecked="True" Padding="4,-1,5,0" RenderTransformOrigin="0.516,5.667"/>
+                    <Label Content="八度偏移" HorizontalAlignment="Right" Margin="0,140,81,0" VerticalAlignment="Top"/>
                     <local:IntSpinner x:Name="numericOctaveOffset" Margin="0,142,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="66" Increment="1" Maximum="8" Value="0" ValueChanged="OnOctaveOffsetChanged" Minimum="-1"/>
-
                     <Separator Height="7" Margin="10,169,10,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelTotalNotes" Content="总音符数：" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top"/>
+                    <Label x:Name="labelDuration" Content="时长：" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
 
-                    <Label x:Name="labelTotalNotes" Content="Total Notes:" HorizontalAlignment="Left" Margin="10,180,0,0" VerticalAlignment="Top"/>
-                    <Label x:Name="labelDuration" Content="Duration:" HorizontalAlignment="Left" Margin="10,210,0,0" VerticalAlignment="Top"/>
-
-                    <Label Content="Note Offset" HorizontalAlignment="Right" Margin="0,180,81,0" VerticalAlignment="Top"/>
+                    <Label Content="音符偏移" HorizontalAlignment="Right" Margin="0,180,81,0" VerticalAlignment="Top"/>
                     <local:IntSpinner x:Name="numericNoteOffset" Margin="0,182,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="66" Increment="1" Maximum="11" Value="0" ValueChanged="OnNoteOffsetChanged" Minimum="-11"/>
-                    <Label Content="Speed (%)" HorizontalAlignment="Right" Margin="0,210,81,0" VerticalAlignment="Top"/>
+                    <Label Content="速度 (%)" HorizontalAlignment="Right" Margin="0,210,81,0" VerticalAlignment="Top"/>
                     <local:IntSpinner x:Name="numericSpeed" Margin="0,212,10,0" HorizontalAlignment="Right" VerticalAlignment="Top" Width="66" Increment="1" Maximum="10000" Value="100" ValueChanged="OnSpeedChanged" Minimum="1"/>
 
-                    <Label Content="Keybind" HorizontalAlignment="Right" Margin="0,241,195,0" VerticalAlignment="Top"/>
+                    <Label Content="快捷键" HorizontalAlignment="Right" Margin="0,241,195,0" VerticalAlignment="Top"/>
                     <local:KeybindReader x:Name="keybindReaderMidi" Margin="0,243,10,0" HorizontalAlignment="Right" KeybindChanged="OnMidiKeybindChanged"/>
-                    <Button x:Name="buttonEditTrackName" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="Edit Track Name" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="110,9,0,0" Click="OnEditTrackName">
+                    <Button x:Name="buttonEditTrackName" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="编辑音轨名称" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="110,9,0,0" Click="OnEditTrackName">
                         <Image Source="Resources/Icons/EditName.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                     </Button>
-                    <Button x:Name="buttonTrackGraph" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="View Track Graph" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="86,9,0,0" Click="OnTrackGraph">
+                    <Button x:Name="buttonTrackGraph" Style="{StaticResource {x:Static ToolBar.ButtonStyleKey}}" HorizontalAlignment="Left" VerticalAlignment="Top" Width="20" ToolTip="查看音轨图" Focusable="False" IsTabStop="False" Height="20" Padding="0" Margin="86,9,0,0" Click="OnTrackGraph">
                         <Image Source="Resources/Icons/Graph.png" Width="16" Height="16" HorizontalAlignment="Center" VerticalAlignment="Center" Style="{StaticResource FlatButtonImageDisablable}"/>
                     </Button>
                 </Grid>
             </TabItem>
             <TabItem Header="同步中" IsTabStop="False">
                 <Grid Margin="0">
-                    <Label Content="Sync Type" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
+                    <Label Content="同步类型" Width="64" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,8,0,0"/>
                     <ComboBox x:Name="comboBoxSyncType" Width="86" Margin="79,10,0,0" HorizontalAlignment="Left" VerticalAlignment="Top" SelectedIndex="0" Padding="4,3" SelectionChanged="OnSyncTypeChanged" IsTabStop="False">
-                        <System:String>Client</System:String>
-                        <System:String>Host</System:String>
+                        <System:String>客户端</System:String>
+                        <System:String>主机</System:String>
                     </ComboBox>
                     <Separator Height="7" Margin="10,37,10,0" VerticalAlignment="Top"/>
                     <Grid x:Name="gridSyncClient" Visibility="Hidden" Margin="0,44,0,0">
                         <Label Content="IP" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,8,0,0"/>
                         <TextBox x:Name="textBoxClientIP" Height="23" Margin="51,10,131,0" TextWrapping="Wrap" VerticalAlignment="Top" AllowDrop="False" TextChanged="OnClientIPChanged"/>
-                        <Label Content="Port" Width="36" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0,8,90,0"/>
+                        <Label Content="端口" Width="36" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0,8,90,0"/>
                         <local:IntSpinner x:Name="numericClientPort" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,15,0" Width="70" Value="0" Maximum="65535" IsTabStop="True" ValueChanged="OnClientPortChanged"/>
-                        <Label Content="User" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,36,0,0"/>
+                        <Label Content="用户名" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,36,0,0"/>
                         <TextBox x:Name="textBoxClientUsername" Height="23" Margin="51,38,131,0" TextWrapping="Wrap" VerticalAlignment="Top" AllowDrop="False" TextChanged="OnClientUsernameChanged"/>
-                        <Label Content="Pass" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,64,0,0"/>
+                        <Label Content="密码" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,64,0,0"/>
                         <TextBox x:Name="textBoxClientPassword" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Margin="51,66,131,0" AllowDrop="False" TextChanged="OnClientPasswordChanged"/>
-                        <Button x:Name="buttonClientConnect" Content="Connect" HorizontalAlignment="Right" Margin="0,38,15,0" VerticalAlignment="Top" Width="97" Click="OnClientConnect"/>
+                        <Button x:Name="buttonClientConnect" Content="连接" HorizontalAlignment="Right" Margin="0,38,15,0" VerticalAlignment="Top" Width="97" Click="OnClientConnect"/>
                         <Separator Height="7" Margin="10,95,10,0" VerticalAlignment="Top"/>
-                        <Label Content="Next Song" Width="67" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,105,0,0"/>
+                        <Label Content="下一首歌曲" Width="67" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,105,0,0"/>
                         <TextBox x:Name="textBoxClientNextSong" IsReadOnly="True" Height="23" Margin="90,107,15,0" TextWrapping="Wrap" VerticalAlignment="Top" Text="" AllowDrop="False" IsUndoEnabled="False" IsTabStop="False"/>
-                        <Label Content="Time Offset (ms)" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="98" HorizontalContentAlignment="Right"/>
+                        <Label Content="时间偏移 (毫秒)" HorizontalAlignment="Left" Margin="10,139,0,0" VerticalAlignment="Top" Width="98" HorizontalContentAlignment="Right"/>
                         <local:IntSpinner x:Name="numericClientTimeOffset" VerticalAlignment="Top" Margin="113,141,15,0" Width="Auto" Value="0" Minimum="-100000000" Maximum="100000000" ValueChanged="OnClientTimeOffsetChanged" IsManipulationEnabled="True" Focusable="True" HorizontalAlignment="Stretch"/>
 
                         <Separator Height="7" Margin="10,169,10,0" VerticalAlignment="Top"/>
-                        <Label x:Name="labelClientPlaying" Content="Stopped" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,179,0,0"/>
-                        <Button x:Name="buttonClientReady" Content="Ready" HorizontalAlignment="Right" Margin="0,181,15,0" VerticalAlignment="Top" Width="75" Click="OnClientReady" IsTabStop="False" Focusable="False"/>
+                        <Label x:Name="labelClientPlaying" Content="已停止" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,179,0,0"/>
+                        <Button x:Name="buttonClientReady" Content="就绪" HorizontalAlignment="Right" Margin="0,181,15,0" VerticalAlignment="Top" Width="75" Click="OnClientReady" IsTabStop="False" Focusable="False"/>
                     </Grid>
                     <Grid x:Name="gridSyncHost" Visibility="Visible" Margin="0,44,0,0">
-                        <Label Content="Pass" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,8,0,0"/>
+                        <Label Content="密码" Width="36" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,8,0,0"/>
                         <TextBox x:Name="textBoxHostPassword" Height="23" Margin="51,10,131,0" TextWrapping="Wrap" VerticalAlignment="Top" AllowDrop="False" TextChanged="OnHostPasswordChanged"/>
-                        <Label Content="Port" Width="36" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0,8,90,0"/>
+                        <Label Content="端口" Width="36" HorizontalAlignment="Right" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0,8,90,0"/>
                         <local:IntSpinner x:Name="numericHostPort" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,10,15,0" Width="70" Value="0" Maximum="65535" IsTabStop="True" ValueChanged="OnHostPortChanged"/>
-                        <Button x:Name="buttonHostStartup" Content="Startup" HorizontalAlignment="Right" Margin="0,38,15,0" VerticalAlignment="Top" Width="97" Click="OnHostStartup"/>
+                        <Button x:Name="buttonHostStartup" Content="启动" HorizontalAlignment="Right" Margin="0,38,15,0" VerticalAlignment="Top" Width="97" Click="OnHostStartup"/>
                         <Separator Height="7" Margin="10,67,10,0" VerticalAlignment="Top"/>
-                        <Label Content="Wait (ms)" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,36,0,0" ToolTip="The pause before all users begin playing"/>
+                        <Label Content="等待 (毫秒)" Width="60" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,36,0,0" ToolTip="所有用户开始播放前的暂停时间"/>
                         <local:IntSpinner x:Name="numericHostWait" VerticalAlignment="Top" Margin="75,38,131,0" Width="Auto" Value="5000" Maximum="60000" Focusable="True" HorizontalAlignment="Stretch" ValueChanged="OnHostWaitChanged"/>
 
-                        <Label x:Name="labelHostNextSong" Content="Next Song" Width="69" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,77,0,0"/>
+                        <Label x:Name="labelHostNextSong" Content="下一首歌曲" Width="69" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="10,77,0,0"/>
                         <TextBox x:Name="textBoxHostNextSong" Height="23" Margin="84,79,43,0" TextWrapping="Wrap" VerticalAlignment="Top" AllowDrop="False" IsTabStop="False"/>
                         <Button x:Name="buttonHostAssignSong" Content="➤" HorizontalAlignment="Right" Margin="0,79,15,0" VerticalAlignment="Top" Width="23" Click="OnHostAssignSong" IsTabStop="False" Focusable="False"/>
                         <Grid x:Name="gridHostPlaying" Background="#FFF9F9F9" VerticalAlignment="Top" Height="26" Margin="10,77,10,0">
-                            <Label x:Name="labelHostPlaying" Content="Stopped" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0"/>
+                            <Label x:Name="labelHostPlaying" Content="已停止" HorizontalAlignment="Left" VerticalAlignment="Top" HorizontalContentAlignment="Right" Margin="0"/>
                         </Grid>
                         <ListView x:Name="listViewClients" Margin="15,108,15,5"/>
                     </Grid>

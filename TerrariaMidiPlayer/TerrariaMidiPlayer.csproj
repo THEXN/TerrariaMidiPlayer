@@ -75,6 +75,7 @@
     <Compile Include="ABC\Note.cs" />
     <Compile Include="ABC\Tune.cs" />
     <Compile Include="Controls\TrackGraph.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Util\CppImports.cs" />
     <Compile Include="Util\Keybind.cs" />
     <Compile Include="Windows\AboutWindow.xaml.cs">
@@ -201,9 +202,6 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\AssemblyInfo.cs">
-      <SubType>Code</SubType>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

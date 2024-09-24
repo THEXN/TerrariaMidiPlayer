@@ -40,8 +40,8 @@ namespace TerrariaMidiPlayer {
 						if (!TerrariaWindowLocator.Update(Config.ChecksEnabled && checkCount > Config.CheckFrequency)) {
 							Pause();
 							Dispatcher.Invoke(() => {
-								TriggerMessageBox.Show(this, MessageIcon.Error, "Failed to keep track of the Terraria Window!", "Tracking Error");
-							});
+                                TriggerMessageBox.Show(this, MessageIcon.Error, "未能跟踪泰拉瑞亚窗口！", "跟踪错误");
+                            });
 							return;
 						}
 						if (checkCount > Config.CheckFrequency)
@@ -54,8 +54,8 @@ namespace TerrariaMidiPlayer {
 						if (!TerrariaWindowLocator.IsOpen) {
 							Pause();
 							Dispatcher.Invoke(() => {
-								TriggerMessageBox.Show(this, MessageIcon.Warning, "Terraria window has been closed.", "Terraria Closed");
-							});
+                                TriggerMessageBox.Show(this, MessageIcon.Warning, "泰拉瑞亚窗口已关闭。", "泰拉瑞亚已关闭");
+                            });
 							return;
 						}
 						clientArea = TerrariaWindowLocator.ClientArea;
@@ -116,7 +116,7 @@ namespace TerrariaMidiPlayer {
 					else {
 						Dispatcher.Invoke(() => {
 							toggleButtonPlay.IsChecked = false;
-							TriggerMessageBox.Show(this, MessageIcon.Warning, "You cannot play a midi when Terraria isn't running! Have you specified the correct executable name in Options?", "Terraria not Running");
+							TriggerMessageBox.Show(this, MessageIcon.Warning, "你不能在泰拉瑞亚未运行时播放MIDI！您在选项中指定了正确的可执行文件名吗？", "Terraria 没有在运行");
 						});
 					}
 				}
@@ -148,7 +148,7 @@ namespace TerrariaMidiPlayer {
 					toggleButtonPause.IsChecked = false;
 					OnPlaybackUIUpdate(null, null);
 					playbackUITimer.Stop();
-					labelClientPlaying.Content = "Stopped";
+					labelClientPlaying.Content = "停止";
 				});
 			}
 			if (server != null)

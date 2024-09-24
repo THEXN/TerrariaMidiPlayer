@@ -75,7 +75,7 @@ namespace TerrariaMidiPlayer.Util {
 				get {
 					if (string.IsNullOrWhiteSpace(Name)) {
 						if (!Config.UseTrackNames || string.IsNullOrWhiteSpace(TrackName))
-							return "Track " + (Index + 1).ToString();
+							return "音轨 " + (Index + 1).ToString();
 						else
 							return TrackName;
 					}

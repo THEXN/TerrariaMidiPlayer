@@ -60,7 +60,7 @@ namespace TerrariaMidiPlayer.Windows {
 			}
 
 			ListBoxItem item = new ListBoxItem();
-			item.Content = "All Tracks";
+			item.Content = "所有轨道";
 			item.FontWeight = FontWeights.Bold;
 			listTracks.Items.Add(item);
 			for (int i = 0; i < Config.Midi.TrackCount; i++) {
@@ -191,8 +191,8 @@ namespace TerrariaMidiPlayer.Windows {
 				return;
 			Config.Midi.Speed = numericSpeed.Value;
 			Config.Sequencer.Speed = Config.Midi.SpeedRatio;
-			labelDuration.Content = "Duration: " + MillisecondsToString(Config.Sequencer.Duration);
-			trackGraph.ReloadTrack();
+            labelDuration.Content = "时长: " + MillisecondsToString(Config.Sequencer.Duration);
+            trackGraph.ReloadTrack();
 			trackGraph.Update();
 			UpdatePlayTime();
 		}
@@ -242,66 +242,110 @@ namespace TerrariaMidiPlayer.Windows {
 			UpdatePlayButtons();
 		}
 
-		#endregion
-		//--------------------------------
-		#endregion
-		//=========== UPDATING ===========
-		#region Updating
+        #endregion
+        //--------------------------------
+        #endregion
+        //=========== UPDATING ===========
+        #region Updating
 
-		/**<summary>Updates changes to the track.</summary>*/
-		private void UpdateTrack() {
-			trackGraph.Update();
-			checkBoxTrackEnabled.IsEnabled = trackIndex != -1;
-			numericOctaveOffset.IsEnabled = trackIndex != -1;
-			numericSpeed.Value = Config.Midi.Speed;
-			numericNoteOffset.Value = Config.Midi.NoteOffset;
-			labelChords.Content = "Chords: " + trackGraph.Chords;
-			labelDuration.Content = "Duration: " + MillisecondsToString(Config.Sequencer.Duration);
-			labelNotes.Content = "Notes: " + trackGraph.TotalNotes;
-			if (trackIndex != -1) {
-				numericOctaveOffset.Value = Config.Midi.GetTrackSettingsAt(trackIndex).OctaveOffset;
-				checkBoxTrackEnabled.IsChecked = Config.Midi.GetTrackSettingsAt(trackIndex).Enabled;
-			}
-			checkBoxValid.ToolTip = trackGraph.ValidNotes + " Notes";
-			checkBoxWrapped.ToolTip = trackGraph.WrappedNotes + " Notes";
-			checkBoxSkipped.ToolTip = trackGraph.SkippedNotes + " Notes";
-			UpdateTrackNotes();
-		}
-		/**<summary>Updates changes to the midi track's note range.</summary>*/
-		private void UpdateTrackNotes() {
-			if (trackIndex == -1) {
-				int highestNote = 0;
-				int lowestNote = 132;
-				for (int index = 0; index < Config.Midi.TrackCount; index++) {
-					if (!Config.Midi.GetTrackSettingsAt(index).Enabled)
-						continue;
-					highestNote = Math.Max(highestNote, Config.Midi.GetTrackAt(index).HighestNote);
-					lowestNote = Math.Min(lowestNote, Config.Midi.GetTrackAt(index).LowestNote);
-				}
-				if (lowestNote > highestNote) {
-					lowestNote = 12;
-					highestNote = 12;
-				}
-				labelHighestNote.Content = "Highest Note: " + NoteToString(
-					highestNote + Config.Midi.NoteOffset
-				);
-				labelLowestNote.Content = "Lowest Note: " + NoteToString(
-					lowestNote + Config.Midi.NoteOffset
-				);
-			}
-			else {
-				labelHighestNote.Content = "Highest Note: " + NoteToString(
-					Config.Midi.GetTrackAt(trackIndex).HighestNote +
-					Config.Midi.NoteOffset
-				);
-				labelLowestNote.Content = "Lowest Note: " + NoteToString(
-					Config.Midi.GetTrackAt(trackIndex).LowestNote +
-					Config.Midi.NoteOffset
-				);
-			}
-		}
-		/**<summary>Updates the play time in the playback tab.</summary>*/
-		private void UpdatePlayTime() {
+        /**<summary>Updates changes to the track.</summary>*/
+        /** <summary>更新所选MIDI轨道的变化。</summary> */
+        private void UpdateTrack()
+        {
+            // 更新轨道图表
+            trackGraph.Update();
+
+            // 启用或禁用复选框和数值控件，取决于是否有选中的轨道
+            checkBoxTrackEnabled.IsEnabled = trackIndex != -1;
+            numericOctaveOffset.IsEnabled = trackIndex != -1;
+
+            // 设置全局速度和音符偏移
+            numericSpeed.Value = Config.Midi.Speed;
+            numericNoteOffset.Value = Config.Midi.NoteOffset;
+
+            // 更新UI标签显示和弦数
+            labelChords.Content = "和弦: " + trackGraph.Chords;
+            // 更新UI标签显示总时长
+            labelDuration.Content = "时长: " + MillisecondsToString(Config.Sequencer.Duration);
+            // 更新UI标签显示总音符数
+            labelNotes.Content = "音符: " + trackGraph.TotalNotes;
+
+            // 如果有选中的轨道
+            if (trackIndex != -1)
+            {
+                // 设置当前轨道的八度偏移
+                numericOctaveOffset.Value = Config.Midi.GetTrackSettingsAt(trackIndex).OctaveOffset;
+                // 设置当前轨道是否启用
+                checkBoxTrackEnabled.IsChecked = Config.Midi.GetTrackSettingsAt(trackIndex).Enabled;
+            }
+
+            // 更新工具提示，显示有效音符数
+            checkBoxValid.ToolTip = trackGraph.ValidNotes + " 个音符";
+            // 更新工具提示，显示包裹音符数
+            checkBoxWrapped.ToolTip = trackGraph.WrappedNotes + " 个音符";
+            // 更新工具提示，显示跳过音符数
+            checkBoxSkipped.ToolTip = trackGraph.SkippedNotes + " 个音符";
+
+            // 更新轨道的音符范围
+            UpdateTrackNotes();
+        }
+        /**<summary>Updates changes to the midi track's note range.</summary>*/
+        /** <summary>更新MIDI轨道的音符范围。</summary> */
+        private void UpdateTrackNotes()
+        {
+            // 如果没有选中的轨道
+            if (trackIndex == -1)
+            {
+                // 初始化最高音和最低音
+                int highestNote = 0;
+                int lowestNote = 132; // MIDI音符编号范围是0到127，这里设为132是为了确保第一次比较时会被替换
+
+                // 遍历所有轨道
+                for (int index = 0; index < Config.Midi.TrackCount; index++)
+                {
+                    // 如果当前轨道被禁用，则跳过
+                    if (!Config.Midi.GetTrackSettingsAt(index).Enabled)
+                        continue;
+
+                    // 更新最高音
+                    highestNote = Math.Max(highestNote, Config.Midi.GetTrackAt(index).HighestNote);
+                    // 更新最低音
+                    lowestNote = Math.Min(lowestNote, Config.Midi.GetTrackAt(index).LowestNote);
+                }
+
+                // 如果最低音高于最高音（这种情况通常不应该发生），则设置默认值
+                if (lowestNote > highestNote)
+                {
+                    lowestNote = 12;
+                    highestNote = 12;
+                }
+
+                // 更新UI标签显示最高音
+                labelHighestNote.Content = "最高音: " + NoteToString(
+                    highestNote + Config.Midi.NoteOffset
+                );
+                // 更新UI标签显示最低音
+                labelLowestNote.Content = "最低音: " + NoteToString(
+                    lowestNote + Config.Midi.NoteOffset
+                );
+            }
+            else
+            {
+                // 如果有选中的轨道
+                // 更新UI标签显示最高音
+                labelHighestNote.Content = "最高音: " + NoteToString(
+                    Config.Midi.GetTrackAt(trackIndex).HighestNote +
+                    Config.Midi.NoteOffset
+                );
+                // 更新UI标签显示最低音
+                labelLowestNote.Content = "最低音: " + NoteToString(
+                    Config.Midi.GetTrackAt(trackIndex).LowestNote +
+                    Config.Midi.NoteOffset
+                );
+            }
+        }
+        /**<summary>Updates the play time in the playback tab.</summary>*/
+        private void UpdatePlayTime() {
 			labelMidiPosition.Content = MillisecondsToString(Config.Sequencer.CurrentTime) + "/" + MillisecondsToString(Config.Sequencer.Duration);
 		}
 		/**<summary>Updates enabled state of midi buttons.</summary>*/

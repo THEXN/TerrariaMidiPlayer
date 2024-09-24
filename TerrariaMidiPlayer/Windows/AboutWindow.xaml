@@ -16,17 +16,26 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <Image HorizontalAlignment="Left" Height="112" Margin="10,13,0,0" VerticalAlignment="Top" Width="112" Source="/TerrariaMidiPlayer;component/Resources/Logo112.png"/>
-        <GroupBox Header="详情" Margin="138,10,10,0" VerticalAlignment="Top" BorderBrush="#FFA9B1B6" Height="128">
+        <GroupBox Header="详情" Margin="138,10,10,0" VerticalAlignment="Top" BorderBrush="#FFA9B1B6" Height="143">
             <Grid>
-                <Label x:Name="labelVersion" Content="1.0.0.1" HorizontalAlignment="Left" Margin="72,26,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="labelBuildDate" Content="24/9/2024" HorizontalAlignment="Left" Margin="72,52,0,0" VerticalAlignment="Top"/>
-                <Label HorizontalAlignment="Left" Margin="72,78,-4,0" VerticalAlignment="Top">
-                    <TextBlock Cursor="Arrow"><Run Text="Robert Jordan肝帝熙恩汉化"/><Run Text=" "/><Run Text="trigger_death" FontSize="9" BaselineAlignment="Top"/></TextBlock>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="9*"/>
+                    <ColumnDefinition Width="103*"/>
+                </Grid.ColumnDefinitions>
+                <Label x:Name="labelVersion" Content="1.0.0.1" HorizontalAlignment="Left" Margin="54,26,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label x:Name="labelBuildDate" Content="24/9/2024" HorizontalAlignment="Left" Margin="54,51,0,0" VerticalAlignment="Top" Grid.Column="1"/>
+                <Label HorizontalAlignment="Left" Margin="54,73,0,0" VerticalAlignment="Top" Grid.Column="1">
+                    <TextBlock Cursor="Arrow"><Run Text="Robert Jordan"/><Run Text=" "/><Run Text="trigger_death" FontSize="9" BaselineAlignment="Top"/></TextBlock>
                 </Label>
-                <Label Content="Terraria MIDI播放器" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF582497" FontWeight="Bold"/>
-                <Label Content="版本:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0"/>
-                <Label Content="构建日期:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,52,0,0"/>
-                <Label Content="创建者:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,78,0,0"/>
+                <Label HorizontalAlignment="Left" Margin="54,95,0,0" VerticalAlignment="Top" Grid.Column="1">
+                    <TextBlock Cursor="Arrow"><Run Text="肝帝熙恩"/></TextBlock>
+                </Label>
+                <Label Content="Terraria MIDI播放器" HorizontalAlignment="Left" VerticalAlignment="Top" Foreground="#FF582497" FontWeight="Bold" Grid.ColumnSpan="2"/>
+                <Label Content="版本:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,26,0,0" Grid.ColumnSpan="2"/>
+                <Label Content="构建日期:" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Margin="0,51,0,0"/>
+                <Label Content="创建者:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,73,0,0" Grid.ColumnSpan="2"/>
+                <Label Content="汉化者:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,95,0,0" Grid.ColumnSpan="2"/>
+
             </Grid>
         </GroupBox>
         <GroupBox Header="说明" Margin="10,143,10,40" BorderBrush="#FFA9B1B6">

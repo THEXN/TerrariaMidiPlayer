@@ -93,7 +93,7 @@ namespace TerrariaMidiPlayer.Util {
 		/**<summary>Gets the human-readable string of the keybind.</summary>*/
 		public string ToProperString() {
 			if (Key == Key.None)
-				return "<No Keybind>";
+				return "<无键位绑定>";
 
 			System.Windows.Forms.Keys formsKey = (System.Windows.Forms.Keys)KeyInterop.VirtualKeyFromKey(Key);
 			string displayString = "";

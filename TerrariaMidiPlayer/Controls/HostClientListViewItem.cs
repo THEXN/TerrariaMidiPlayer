@@ -61,15 +61,15 @@ namespace TerrariaMidiPlayer.Controls {
 				case ReadyStates.None:
 					textBlockReady.Text = "";
 					break;
-				case ReadyStates.NotReady:
-					textBlockReady.Text = "Not Ready";
-					textBlockReady.Foreground = Brushes.Red;
-					break;
-				case ReadyStates.Ready:
-					textBlockReady.Text = "Ready";
-					textBlockReady.Foreground = Brushes.Green;
-					break;
-			}
+                case ReadyStates.NotReady:
+                    textBlockReady.Text = "未就绪";
+                    textBlockReady.Foreground = Brushes.Red;
+                    break;
+                case ReadyStates.Ready:
+                    textBlockReady.Text = "已就绪";
+                    textBlockReady.Foreground = Brushes.Green;
+                    break;
+            }
 			grid.Children.Add(textBlockReady);
 
 			Loaded += OnLoaded;
@@ -83,32 +83,35 @@ namespace TerrariaMidiPlayer.Controls {
 		public string Username {
 			get { return username; }
 		}
-		/**<summary>True if the client is ready.</summary>*/
-		public ReadyStates Ready {
-			get { return ready; }
-			set {
-				ready = value;
-				switch (value) {
-				case ReadyStates.None:
-					textBlockReady.Text = "";
-					break;
-				case ReadyStates.NotReady:
-					textBlockReady.Text = "Not Ready";
-					textBlockReady.Foreground = Brushes.Red;
-					break;
-				case ReadyStates.Ready:
-					textBlockReady.Text = "Ready";
-					textBlockReady.Foreground = Brushes.Green;
-					break;
-				}
-			}
-		}
+        /**<summary>True if the client is ready.</summary>*/
+        public ReadyStates Ready
+        {
+            get { return ready; }
+            set
+            {
+                ready = value;
+                switch (value)
+                {
+                    case ReadyStates.None:
+                        textBlockReady.Text = "";
+                        break;
+                    case ReadyStates.NotReady:
+                        textBlockReady.Text = "未就绪";
+                        textBlockReady.Foreground = Brushes.Red;
+                        break;
+                    case ReadyStates.Ready:
+                        textBlockReady.Text = "已就绪";
+                        textBlockReady.Foreground = Brushes.Green;
+                        break;
+                }
+            }
+        }
 
-		#endregion
-		//============ EVENTS ============
-		#region Events
+        #endregion
+        //============ EVENTS ============
+        #region Events
 
-		private void OnLoaded(object sender, RoutedEventArgs e) {
+        private void OnLoaded(object sender, RoutedEventArgs e) {
 			Width = ((ListView)Parent).ActualWidth - 4;
 			grid.Width = Width - 8;
 		}
